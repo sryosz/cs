@@ -5,6 +5,7 @@ import com.cs.exception.user.UserAlreadyExistsException;
 import com.cs.exception.user.UserNotFoundException;
 import com.cs.exception.user.UserValidationException;
 import com.cs.patcher.UserPatcher;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Repository;
@@ -62,7 +63,8 @@ public class UserRepositoryImpl implements UserRepository{
     @Override
     public User update(String email, User user) {
         validateUser(user);
-        users.put(email, user);
+        users.remove(email);
+        users.put(user.getEmail(), user);
 
         return user;
     }
@@ -90,6 +92,12 @@ public class UserRepositoryImpl implements UserRepository{
         }
         users.remove(email);
     }
+
+    @Override
+    public void deleteAll() {
+        users.clear();
+    }
+
 
     @Override
     public List<User> findUsersInBirthDateRange(LocalDate dateFrom, LocalDate dateTo) {

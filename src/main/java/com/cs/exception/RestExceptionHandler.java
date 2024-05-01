@@ -36,7 +36,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler{
                 LocalDateTime.now().toString()
         );
 
-        return new ResponseEntity<>(error, HttpStatus.FORBIDDEN);
+        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(UserAlreadyExistsException.class)
@@ -48,7 +48,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler{
                 LocalDateTime.now().toString()
         );
 
-        return new ResponseEntity<>(error, HttpStatus.FORBIDDEN);
+        return new ResponseEntity<>(error, HttpStatus.CONFLICT);
     }
 
 }

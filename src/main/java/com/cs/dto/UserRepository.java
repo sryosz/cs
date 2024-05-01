@@ -13,5 +13,6 @@ public interface UserRepository {
     User update(String email, User user);
     User patchUser(String email, User newUser);
     void deleteByEmail(String email);
+    void deleteAll();
     List<User> findUsersInBirthDateRange(LocalDate dateFrom, LocalDate dateTo);
 }
