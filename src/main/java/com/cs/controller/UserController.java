@@ -2,6 +2,7 @@ package com.cs.controller;
 
 import com.cs.dto.UserRepositoryImpl;
 import com.cs.entity.User;
+import com.cs.exception.user.UserNotFoundException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -58,7 +59,6 @@ public class UserController {
 
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
-
 
     @DeleteMapping("/{email}")
     public ResponseEntity<String> deleteUserByEmail(@PathVariable String email) {

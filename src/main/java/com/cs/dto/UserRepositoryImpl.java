@@ -117,7 +117,7 @@ public class UserRepositoryImpl implements UserRepository{
         }
     }
 
-    private boolean isUserExists(String email){
+    public boolean isUserExists(String email){
         return users.containsKey(email);
     }
 }
